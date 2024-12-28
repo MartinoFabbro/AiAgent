@@ -20,14 +20,15 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-def populate_envs(sender_email, receiver_email, subject):
-    os.environ['FROM_EMAIL'] = "hello@trial-z3m5jgrzr8mldpyo.mlsender.net"
+def populate_envs(receiver_email, subject):
+    # Use a specific sender email, and set the other email-related environment variables
+    os.environ['FROM_EMAIL'] = "your_fixed_sender_email@example.com"  # Replace with your desired sender email
     os.environ['TO_EMAIL'] = receiver_email
     os.environ['EMAIL_SUBJECT'] = subject
 
-def send_email(sender_email, receiver_email, subject, thread_id):
+def send_email(receiver_email, subject, thread_id):
     try:
-        populate_envs(sender_email, receiver_email, subject)
+        populate_envs(receiver_email, subject)
         config = {'configurable': {'thread_id': thread_id}}
         st.session_state.agent.graph.invoke(None, config=config)
         st.success('Email sent successfully!')
@@ -35,6 +36,25 @@ def send_email(sender_email, receiver_email, subject, thread_id):
             st.session_state.pop(key, None)
     except Exception as e:
         st.error(f'Error sending email: {e}')
+
+def render_email_form():
+    send_email_option = st.radio('Share Your Travel Plan', ('Keep to Myself', 'Send via Email'))
+    if send_email_option == 'Send via Email':
+        with st.form(key='email_form'):
+            receiver_email = st.text_input('Recipient Email', help='Enter the email address of the recipient.')
+            subject = st.text_input('Email Subject', 'My AI Travel Plan')
+            submit_button = st.form_submit_button(label='Send Travel Plan')
+
+        if submit_button:
+            if receiver_email and subject:
+                # Fix: Ensure thread_id is provided as the third argument
+                if 'thread_id' in st.session_state:
+                    send_email(receiver_email, subject, st.session_state.thread_id)
+                else:
+                    st.error('Thread ID is missing. Please try generating your travel plan again.')
+            else:
+                st.error('Please complete all email fields.')
+
 
 def initialize_agent():
     if 'agent' not in st.session_state:
@@ -53,6 +73,10 @@ def render_custom_css():
             --light-background: #ffffff; /* Pure white for text areas and cards */
             --dark-background: #1e1e2f; /* Dark background for contrast */
             --highlight-color: #666; /* Mid-gray for less prominent text */
+        }
+                
+        p {
+                color: black
         }
 
         /* Global Background and Text */
