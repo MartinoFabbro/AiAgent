@@ -49,17 +49,30 @@ def render_custom_css():
             --primary-color: #4158D0;
             --secondary-color: #C850C0;
             --background-color: #f4f6f9;
-            --text-color: #333;
-        }
-                
-                
-        .stRadio label {
-             color: #333 !important; /* Use a dark, visible color */
+            --text-color: #333; /* Dark gray text for readability */
+            --light-background: #ffffff; /* Pure white for text areas and cards */
+            --dark-background: #1e1e2f; /* Dark background for contrast */
+            --highlight-color: #666; /* Mid-gray for less prominent text */
         }
 
+        /* Global Background and Text */
         body, .stApp {
             background-color: var(--background-color) !important;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--text-color) !important;
+        }
+
+        /* Sidebar Styling */
+        [data-testid="stSidebar"] {
+            background-color: var(--light-background) !important;
+            border-right: 1px solid #d0d7de !important;
+        }
+        [data-testid="stSidebar"] .stRadio label {
+            color: var(--text-color) !important;
+        }
+
+        /* Radio Button Text Color */
+        .stRadio label {
             color: var(--text-color) !important;
         }
 
@@ -72,15 +85,10 @@ def render_custom_css():
         .stMarkdown, .stText, .stTextArea {
             color: var(--text-color) !important;
         }
-        
-        /* Radio Button Text Color */
-        .stRadio label {
-            color: var(--text-color) !important;
-        }
 
-        /* Text Area Improvements */
+        /* Text Area Styling */
         .stTextArea textarea {
-            background-color: white !important;
+            background-color: var(--light-background) !important;
             color: var(--text-color) !important;
             border: 1px solid #d0d7de !important;
             border-radius: 12px !important;
@@ -88,10 +96,15 @@ def render_custom_css():
             box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
         }
 
+        /* Highlighted Text for Less Important Elements */
+        .stMarkdown p, .stText small {
+            color: var(--highlight-color) !important;
+        }
+
         /* Button Styling */
         .stButton > button {
             background-color: var(--primary-color) !important;
-            color: white !important;
+            color: #ffffff !important;
             border-radius: 20px !important;
             border: none !important;
             padding: 10px 20px !important;
@@ -106,10 +119,19 @@ def render_custom_css():
             box-shadow: 0 6px 8px rgba(0,0,0,0.2) !important;
         }
 
-        /* Sidebar Styling */
-        [data-testid="stSidebar"] {
-            background-color: #e6eaf3 !important;
-            border-right: 1px solid #d0d7de !important;
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 10px !important;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1 !important;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888 !important;
+            border-radius: 5px !important;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555 !important;
         }
 
         /* Title Styling */
@@ -130,21 +152,6 @@ def render_custom_css():
             }
         }
 
-        /* Scrollbar Styling */
-        ::-webkit-scrollbar {
-            width: 10px !important;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1 !important;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #888 !important;
-            border-radius: 5px !important;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555 !important;
-        }
-
         /* Branding Removal (Minimal) */
         #MainMenu, footer, header, [data-testid="stToolbar"] {
             display: none !important;
@@ -153,11 +160,19 @@ def render_custom_css():
 
         /* Card-like Container */
         .stContainer {
-            background-color: white !important;
+            background-color: var(--light-background) !important;
+            color: var(--text-color) !important;
             border-radius: 15px !important;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
             padding: 20px !important;
             margin-bottom: 20px !important;
+        }
+
+        /* Descriptive Text in Centered Section */
+        .center-container p {
+            color: var(--highlight-color) !important;
+            font-size: 1.1em !important;
+            text-align: center !important;
         }
         </style>
         ''', unsafe_allow_html=True)
