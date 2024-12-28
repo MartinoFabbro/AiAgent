@@ -44,81 +44,94 @@ def initialize_agent():
 def render_custom_css():
     st.markdown('''
         <style>
-        /* Hide Streamlit default elements */
-        #MainMenu {visibility: hidden;}
-        footer {visibility: hidden;}
-        header {visibility: hidden;}
+        /* Complete removal of Streamlit branding */
+        #MainMenu {visibility: hidden !important;}
+        footer {visibility: hidden !important;}
+        header {visibility: hidden !important;}
         
-        /* Sidebar customization */
-        [data-testid="stSidebar"] {
-            background-color: #f0f2f6;
-            transition: width 0.3s ease;
+        /* Comprehensive branding removal */
+        [data-testid="stDecoration"] {
+            visibility: hidden !important;
         }
         
-        /* Custom scrollbar */
+        /* Global text and background styling */
+        body {
+            color: #333;
+            background-color: #f4f6f9 !important;
+        }
+        
+        .stApp {
+            background-color: #f4f6f9 !important;
+            color: #333 !important;
+        }
+        
+        /* Enhanced sidebar styling */
+        [data-testid="stSidebar"] {
+            background-color: #e6eaf3;
+        }
+        
+        /* Text area improvements */
+        .stTextArea textarea {
+            background-color: white !important;
+            color: #333 !important;
+            border: 1px solid #d0d7de !important;
+        }
+        
+        /* Button styling */
+        .stButton>button {
+            background-color: #4158D0 !important;
+            color: white !important;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        .stButton>button:hover {
+            background-color: #C850C0 !important;
+            transform: scale(1.05);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+        
+        /* Typography */
+        .main-title {
+            color: #333 !important;
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 800;
+        }
+        
+        /* Ensure readable text */
+        * {
+            color: #333 !important;
+        }
+        
+        /* Scrollbar styling */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 10px;
         }
         ::-webkit-scrollbar-track {
             background: #f1f1f1;
         }
         ::-webkit-scrollbar-thumb {
             background: #888;
-            border-radius: 4px;
+            border-radius: 5px;
         }
         ::-webkit-scrollbar-thumb:hover {
             background: #555;
         }
         
-        /* Application styling */
-        .stApp {
-            background-color: #f0f2f6;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        }
-        
-        /* Gradient title */
-        .main-title {
-            font-size: 3em;
-            background: linear-gradient(45deg, #4158D0, #C850C0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-align: center;
-            margin-bottom: 30px;
-            font-weight: 800;
-        }
-        
-        /* Text area styling */
-        .stTextArea textarea {
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            border: 1px solid #e0e0e0;
-        }
-        
-        /* Button styling */
-        .stButton>button {
-            background-color: #4158D0;
-            color: white;
-            border-radius: 20px;
-            padding: 10px 20px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-        }
-        .stButton>button:hover {
-            background-color: #C850C0;
-            transform: scale(1.05);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-        }
-        
-        /* Responsive design */
+        /* Responsive adjustments */
         @media (max-width: 600px) {
             .main-title {
                 font-size: 2em;
             }
         }
+        
+        /* Hide any remaining Streamlit specific elements */
+        [data-testid="stToolbar"] {
+            visibility: hidden !important;
+        }
         </style>
-    ''', unsafe_allow_html=True)
+        ''', unsafe_allow_html=True)
 
 def render_ui():
     # Custom sidebar with logo
