@@ -21,7 +21,7 @@ st.set_page_config(
 )
 
 def populate_envs(sender_email, receiver_email, subject):
-    os.environ['FROM_EMAIL'] = sender_email
+    os.environ['FROM_EMAIL'] = "hello@trial-z3m5jgrzr8mldpyo.mlsender.net"
     os.environ['TO_EMAIL'] = receiver_email
     os.environ['EMAIL_SUBJECT'] = subject
 
@@ -246,14 +246,13 @@ def render_email_form():
     send_email_option = st.radio('Share Your Travel Plan', ('Keep to Myself', 'Send via Email'))
     if send_email_option == 'Send via Email':
         with st.form(key='email_form'):
-            sender_email = st.text_input('Your Email')
-            receiver_email = st.text_input('Recipient Email')
+            receiver_email = st.text_input('Recipient Email', help='Enter the email address of the recipient.')
             subject = st.text_input('Email Subject', 'My AI Travel Plan')
             submit_button = st.form_submit_button(label='Send Travel Plan')
 
         if submit_button:
-            if sender_email and receiver_email and subject:
-                send_email(sender_email, receiver_email, subject, st.session_state.thread_id)
+            if receiver_email and subject:
+                send_email(receiver_email, subject, st.session_state.thread_id)
             else:
                 st.error('Please complete all email fields.')
 
