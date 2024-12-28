@@ -1,3 +1,9 @@
+st.set_page_config(
+    page_title="AI Travel Companion",
+    page_icon="✈️",  # Use your preferred icon
+    layout="wide"
+)
+
 import os
 import uuid
 import streamlit as st
@@ -29,6 +35,18 @@ def render_custom_css():
     st.markdown('''
         <style>
         /* Modern, sleek design */
+        
+        /* Hide Streamlit branding */
+                
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
+        header {visibility: hidden;}
+        
+        /* Your custom styling */
+        .stApp {
+            background-color: #f0f2f6;
+            font-family: 'Inter', sans-serif;
+        }
         .stApp {
             background-color: #f0f2f6;
             font-family: 'Inter', sans-serif;
