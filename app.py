@@ -44,6 +44,19 @@ def initialize_agent():
 def render_custom_css():
     st.markdown('''
         <style>
+                        /* Remove dynamically generated classes */
+        [class^="st-emotion-cache"],
+        [class*="_profileContainer"],
+        [class*="_container"] {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            width: 0 !important;
+            height: 0 !important;
+            position: absolute !important;
+            top: -9999px !important;
+            left: -9999px !important;
+        }
         /* Complete removal of Streamlit branding */
         #MainMenu {visibility: hidden !important;}
         footer {visibility: hidden !important;}
@@ -59,6 +72,10 @@ def render_custom_css():
             color: #333;
             background-color: #f4f6f9 !important;
         }
+                
+        button {
+                color: white !important
+                }
         
         .stApp {
             background-color: #f4f6f9 !important;
@@ -139,6 +156,21 @@ def render_ui():
         st.image('images/ai-travel.png', use_column_width=True)
         st.markdown("### AI Travel Companion")
         st.markdown("Your intelligent travel planning assistant")
+        st.markdown('''
+    <style>
+    .stApp::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(65,88,208,0.1) 0%, rgba(200,80,192,0.1) 100%);
+        z-index: -1;
+        pointer-events: none;
+    }
+    </style>
+    ''', unsafe_allow_html=True)
 
     # Main content
     st.markdown('<div class="center-container">', unsafe_allow_html=True)
