@@ -40,7 +40,7 @@ class AgentState(TypedDict):
 class Agent:
     def __init__(self):
         self._tools = {t.name: t for t in TOOLS}
-        self._tools_llm = ChatOpenAI(model='gpt-3.5-turbo').bind_tools(TOOLS)
+        self._tools_llm = ChatOpenAI(model='gpt-4o').bind_tools(TOOLS)
 
         builder = StateGraph(AgentState)
         builder.add_node('call_tools_llm', self.call_tools_llm)

@@ -76,7 +76,16 @@ def render_custom_css():
         }
                 
         p {
-                color: black
+            color: black
+        }
+                
+        button {
+            background-color: white;
+            border: 1px solid black;
+                }
+                
+        div[data-baseweb="radio"] > label {
+            color: black !important; /* Explicitly set text color to black */
         }
 
         /* Global Background and Text */
