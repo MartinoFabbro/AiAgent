@@ -79,7 +79,7 @@ def render_custom_css():
             color: black
         }
                 
-        button {
+        .stElementContainer button {
             background-color: white !important;
             border: 1px solid black !important;
                 }
