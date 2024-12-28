@@ -136,10 +136,10 @@ def render_custom_css():
 
         /* Button Styling */
         .stButton > button {
-            background-color: var(--primary-color) !important;
+            background-color: white !important;
             color: #ffffff !important;
             border-radius: 20px !important;
-            border: none !important;
+            border: solid 2px black !important;
             padding: 10px 20px !important;
             font-weight: 600 !important;
             transition: all 0.3s ease !important;
