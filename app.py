@@ -44,19 +44,7 @@ def initialize_agent():
 def render_custom_css():
     st.markdown('''
         <style>
-                        /* Remove dynamically generated classes */
-        [class^="st-emotion-cache"],
-        [class*="_profileContainer"],
-        [class*="_container"] {
-            display: none !important;
-            visibility: hidden !important;
-            opacity: 0 !important;
-            width: 0 !important;
-            height: 0 !important;
-            position: absolute !important;
-            top: -9999px !important;
-            left: -9999px !important;
-        }
+
         /* Complete removal of Streamlit branding */
         #MainMenu {visibility: hidden !important;}
         footer {visibility: hidden !important;}
