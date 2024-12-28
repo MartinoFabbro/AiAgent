@@ -1,14 +1,14 @@
-st.set_page_config(
-    page_title="AI Travel Companion",
-    page_icon="✈️",  # Use your preferred icon
-    layout="wide"
-)
-
 import os
 import uuid
 import streamlit as st
 from langchain_core.messages import HumanMessage
 from agents.agent import Agent
+
+st.set_page_config(
+    page_title="AI Travel Companion",
+    page_icon="✈️",  # Use your preferred icon
+    layout="wide"
+)
 
 def populate_envs(sender_email, receiver_email, subject):
     os.environ['FROM_EMAIL'] = sender_email
