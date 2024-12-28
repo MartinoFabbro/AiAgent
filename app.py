@@ -44,96 +44,110 @@ def initialize_agent():
 def render_custom_css():
     st.markdown('''
         <style>
+        /* Reset and Global Styles */
+        :root {
+            --primary-color: #4158D0;
+            --secondary-color: #C850C0;
+            --background-color: #f4f6f9;
+            --text-color: #333;
+        }
 
-        /* Complete removal of Streamlit branding */
-        #MainMenu {visibility: hidden !important;}
-        footer {visibility: hidden !important;}
-        header {visibility: hidden !important;}
-        
-        /* Comprehensive branding removal */
-        [data-testid="stDecoration"] {
-            visibility: hidden !important;
+        body, .stApp {
+            background-color: var(--background-color) !important;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--text-color) !important;
         }
-        
-        /* Global text and background styling */
-        body {
-            color: #333;
-            background-color: #f4f6f9 !important;
+
+        /* Container Styling */
+        .stApp > div:first-child {
+            background-color: var(--background-color) !important;
         }
-                
-        button {
-                color: white !important
-                }
-        
-        .stApp {
-            background-color: #f4f6f9 !important;
-            color: #333 !important;
+
+        /* Text Styling */
+        .stMarkdown, .stText, .stTextArea {
+            color: var(--text-color) !important;
         }
-        
-        /* Enhanced sidebar styling */
-        [data-testid="stSidebar"] {
-            background-color: #e6eaf3;
-        }
-        
-        /* Text area improvements */
+
+        /* Text Area Improvements */
         .stTextArea textarea {
             background-color: white !important;
-            color: #333 !important;
+            color: var(--text-color) !important;
             border: 1px solid #d0d7de !important;
+            border-radius: 12px !important;
+            padding: 12px !important;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
         }
-        
-        /* Button styling */
-        .stButton>button {
-            background-color: #4158D0 !important;
+
+        /* Button Styling */
+        .stButton > button {
+            background-color: var(--primary-color) !important;
             color: white !important;
-            border-radius: 20px;
-            transition: all 0.3s ease;
+            border-radius: 20px !important;
+            border: none !important;
+            padding: 10px 20px !important;
+            font-weight: 600 !important;
+            transition: all 0.3s ease !important;
+            text-transform: uppercase !important;
         }
-        .stButton>button:hover {
-            background-color: #C850C0 !important;
-            transform: scale(1.05);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+
+        .stButton > button:hover {
+            background-color: var(--secondary-color) !important;
+            transform: scale(1.05) !important;
+            box-shadow: 0 6px 8px rgba(0,0,0,0.2) !important;
         }
-        
-        /* Typography */
+
+        /* Sidebar Styling */
+        [data-testid="stSidebar"] {
+            background-color: #e6eaf3 !important;
+            border-right: 1px solid #d0d7de !important;
+        }
+
+        /* Title Styling */
         .main-title {
-            color: #333 !important;
-            font-size: 3em;
-            text-align: center;
-            margin-bottom: 30px;
-            font-weight: 800;
+            font-size: 3em !important;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            text-align: center !important;
+            margin-bottom: 30px !important;
+            font-weight: 800 !important;
         }
-        
-        /* Ensure readable text */
-        * {
-            color: #333 !important;
-        }
-        
-        /* Scrollbar styling */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 5px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-        
-        /* Responsive adjustments */
+
+        /* Responsive Typography */
         @media (max-width: 600px) {
             .main-title {
-                font-size: 2em;
+                font-size: 2em !important;
             }
         }
-        
-        /* Hide any remaining Streamlit specific elements */
-        [data-testid="stToolbar"] {
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 10px !important;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1 !important;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888 !important;
+            border-radius: 5px !important;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555 !important;
+        }
+
+        /* Branding Removal (Minimal) */
+        #MainMenu, footer, header, [data-testid="stToolbar"] {
+            display: none !important;
             visibility: hidden !important;
+        }
+
+        /* Card-like Container */
+        .stContainer {
+            background-color: white !important;
+            border-radius: 15px !important;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
+            padding: 20px !important;
+            margin-bottom: 20px !important;
         }
         </style>
         ''', unsafe_allow_html=True)
