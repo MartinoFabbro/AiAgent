@@ -80,8 +80,8 @@ def render_custom_css():
         }
                 
         button {
-            background-color: white;
-            border: 1px solid black;
+            background-color: white !important;
+            border: 1px solid black !important;
                 }
                 
         div[data-baseweb="radio"] > label {
@@ -138,7 +138,7 @@ def render_custom_css():
         .stButton > button {
             background-color: white !important;
             color: #ffffff !important;
-            border-radius: 20px !important;
+            border-radius: 8px !important;
             border: solid 2px black !important;
             padding: 10px 20px !important;
             font-weight: 600 !important;
@@ -213,7 +213,7 @@ def render_custom_css():
 def render_ui():
     # Custom sidebar with logo
     with st.sidebar:
-        st.image('images/ai-travel.png', use_column_width=True)
+        st.image('images/ai-travel.png', use_container_width=True)
         st.markdown("### AI Travel Companion")
         st.markdown("Your intelligent travel planning assistant")
         st.markdown('''
