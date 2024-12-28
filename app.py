@@ -51,6 +51,11 @@ def render_custom_css():
             --background-color: #f4f6f9;
             --text-color: #333;
         }
+                
+                
+        .stRadio label {
+             color: #333 !important; /* Use a dark, visible color */
+        }
 
         body, .stApp {
             background-color: var(--background-color) !important;
