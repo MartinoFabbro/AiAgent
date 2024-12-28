@@ -67,6 +67,11 @@ def render_custom_css():
         .stMarkdown, .stText, .stTextArea {
             color: var(--text-color) !important;
         }
+        
+        /* Radio Button Text Color */
+        .stRadio label {
+            color: var(--text-color) !important;
+        }
 
         /* Text Area Improvements */
         .stTextArea textarea {
