@@ -1,8 +1,16 @@
+import sys
 import os
 import uuid
 import streamlit as st
 from langchain_core.messages import HumanMessage
+
+# Add this BEFORE the import
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from agents.agent import Agent
+
+# Rest of the code remains the same
+
 
 # Set page configuration
 st.set_page_config(
